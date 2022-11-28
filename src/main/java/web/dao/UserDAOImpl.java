@@ -1,6 +1,6 @@
 package web.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -39,12 +39,7 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     @Transactional
-    public void update(User updateUser, int id) {
-        User user = getUser(id);
-        user.setName(updateUser.getName());
-        user.setSurname(updateUser.getSurname());
-        user.setAge(updateUser.getAge());
-        user.setEmail(updateUser.getEmail());
+    public void update(User user) {
         entityManager.merge(user);
     }
 }

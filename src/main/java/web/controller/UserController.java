@@ -41,10 +41,9 @@ public class UserController {
         return "edit";
     }
 
-
     @PostMapping("/{id}")
-    public String saveEditedUser(@ModelAttribute("user") User user, @PathVariable(name = "id") int id){
-        userDAOImpl.update(user, id);
+    public String saveEditedUser(@ModelAttribute("user") User user) {
+        userDAOImpl.update(user);
         return "redirect:/users";
     }
 

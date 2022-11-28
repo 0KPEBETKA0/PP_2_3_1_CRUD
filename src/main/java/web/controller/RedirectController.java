@@ -9,9 +9,8 @@ import java.util.List;
 
 @Controller
 public class RedirectController {
-	@GetMapping(value = "/")
-	public String printWelcome(ModelMap model) {
+    @GetMapping(value = "/")
+    public String printWelcome(ModelMap model) {
 		return "redirect:/users";
-	}
-	
+    }
 }

@@ -22,7 +22,7 @@ public class PersistenceJPAConfig {
         LocalContainerEntityManagerFactoryBean entityManager =
                 new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(dataSource());
-        entityManager.setPackagesToScan(new String[] {"web"});
+        entityManager.setPackagesToScan(new String[]{"web"});
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManager.setJpaVendorAdapter(vendorAdapter);
