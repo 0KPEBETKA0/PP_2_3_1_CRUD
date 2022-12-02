@@ -18,8 +18,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllUsers(){
-       return userDAO.getAllUsers();
+    public List<User> getAllUsers() {
+        return userDAO.getAllUsers();
     }
 
     @Override
@@ -44,6 +44,4 @@ public class UserServiceImpl implements UserService {
     public void update(User user) {
         userDAO.update(user);
     }
-
-
 }
