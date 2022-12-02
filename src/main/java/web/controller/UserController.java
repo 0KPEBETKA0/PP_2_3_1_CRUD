@@ -6,20 +6,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.dao.UserDAOImpl;
 import web.model.User;
+import web.service.UserService;
+import web.service.UserServiceImpl;
 
 @Controller
 @RequestMapping(value = "/users")
 public class UserController {
-    private final UserDAOImpl userDAOImpl;
+    private final UserServiceImpl userServiceImpl;
 
     @Autowired
-    public UserController(UserDAOImpl userDAOImpl) {
-        this.userDAOImpl = userDAOImpl;
+    public UserController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping()
     public String getAllUsers(Model model) {
-        model.addAttribute("allUsers", userDAOImpl.getAllUsers());
+        model.addAttribute("allUsers", userServiceImpl.getAllUsers());
         return "show";
     }
 
@@ -31,25 +33,25 @@ public class UserController {
 
     @PostMapping()
     public String createUser(@ModelAttribute("user") User user) {
-        userDAOImpl.save(user);
+        userServiceImpl.save(user);
         return "redirect:/users";
     }
 
     @GetMapping("/{id}/edit")
     public String editUser(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userDAOImpl.getUser(id));
+        model.addAttribute("user", userServiceImpl.getUser(id));
         return "edit";
     }
 
     @PostMapping("/{id}")
     public String saveEditedUser(@ModelAttribute("user") User user) {
-        userDAOImpl.update(user);
+        userServiceImpl.update(user);
         return "redirect:/users";
     }
 
     @PostMapping("/{id}/delete")
     public String deleteUser(@PathVariable(name = "id") int id) {
-        userDAOImpl.delete(id);
+        userServiceImpl.delete(id);
         return "redirect:/users";
     }
 }
