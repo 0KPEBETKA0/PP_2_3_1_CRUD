@@ -8,11 +8,11 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    public User getUser(int id);
+    public User getUser(Long id);
 
     public void save(User user);
 
-    public void delete(int id);
+    public void delete(Long id);
 
     public void update(User user);
 
